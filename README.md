@@ -24,6 +24,7 @@ The following keyboard keys can be used to explore the Julia Set being rendered:
 - <kbd>Shift</kbd>+<kbd>i</kbd>: increase the imaginary part of the julia c constant
 - <kbd>r</kbd>: decrease the real part of the julia c constant
 - <kbd>Shift</kbd>+<kbd>r</kbd>: increase the real part of the julia c constant
+- <kbd>p</kbd>: print the current Julia set constant and rendering position on console
 
 ## How to build
 

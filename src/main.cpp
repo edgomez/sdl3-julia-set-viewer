@@ -134,6 +134,10 @@ main(int /* argc */, char** /* argv */)
                     else
                         julia_c -= complex{0.f, julia_c_displacement.imag()};
                     break;
+                case SDL_SCANCODE_P:
+                    std::printf("c = %f + %fi, pos = %f + %fi\n", julia_c.real(), julia_c.imag(),
+                                pos.real(), pos.imag());
+                    break;
                 default:
                     // do nothing
                     break;
