@@ -42,7 +42,8 @@ main(int /* argc */, char** /* argv */)
     SCOPE_EXIT([]() { SDL_Quit(); });
 
     SDL_Window* window = nullptr;
-    window = SDL_CreateWindow("Julia fractal", s_window_default_witdh, s_window_default_height, 0);
+    window =
+        SDL_CreateWindow("Julia Set viewer", s_window_default_witdh, s_window_default_height, 0);
     if (!window)
     {
         std::printf("error: failed creating window\n");
