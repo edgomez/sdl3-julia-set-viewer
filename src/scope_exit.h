@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright(C) 2023 Edouard Gomez
+
 #pragma once
 
 namespace

@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright(C) 2023 Edouard Gomez
+
 #include <cstdio>
 #include <cstdlib>
 #include <functional>
