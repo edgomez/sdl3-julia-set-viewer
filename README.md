@@ -18,6 +18,10 @@ The following keyboard keys can be used to explore the Julia Set being rendered:
 - <kbd>Down</kbd>: move down
 - <kbd>Right</kbd>: move right
 - <kbd>Left</kbd>: move left
+- <kbd>i</kbd>: decrease the imaginary part of the julia c constant
+- <kbd>Shift</kbd>+<kbd>i</kbd>: increase the imaginary part of the julia c constant
+- <kbd>r</kbd>: decrease the real part of the julia c constant
+- <kbd>Shift</kbd>+<kbd>r</kbd>: increase the real part of the julia c constant
 
 ## How to build
 

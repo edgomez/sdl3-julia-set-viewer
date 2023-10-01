@@ -23,7 +23,10 @@ using complex = std::complex<float>;
 
 // You can try different constant complex here.
 // See https://paulbourke.net/fractals/juliaset/
-static constexpr complex julia_c{0.355534f, -0.337292f};
+complex julia_c{0.355534f, -0.337292f};
+
+// Displacement value when key pressing r/R or i/I
+static constexpr complex julia_c_displacement{0.01f, 0.01f};
 
 // Number of iterations before stating the norm of the series reaches infinity
 static constexpr int s_iterations = 64;
@@ -118,6 +121,18 @@ main(int /* argc */, char** /* argv */)
                     break;
                 case SDL_SCANCODE_RIGHT:
                     pos += complex{scale * displacement.real(), 0.f};
+                    break;
+                case SDL_SCANCODE_R:
+                    if (e.key.keysym.mod & SDL_KMOD_SHIFT)
+                        julia_c += complex{julia_c_displacement.real(), 0.f};
+                    else
+                        julia_c -= complex{julia_c_displacement.real(), 0.f};
+                    break;
+                case SDL_SCANCODE_I:
+                    if (e.key.keysym.mod & SDL_KMOD_SHIFT)
+                        julia_c += complex{0.f, julia_c_displacement.imag()};
+                    else
+                        julia_c -= complex{0.f, julia_c_displacement.imag()};
                     break;
                 default:
                     // do nothing
