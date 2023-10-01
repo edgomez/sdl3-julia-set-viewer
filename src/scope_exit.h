@@ -4,33 +4,48 @@ namespace
 {
 
 /** RAII scope guard */
-template<typename T>
-struct scope_exit
+template <typename T> struct scope_exit
 {
-public:
+  public:
     /** ctor
      * @param[in] f Functor to execute on scope exit
      */
-    explicit scope_exit(T&& f) : m_functor(std::forward<T>(f)) {}
-    ~scope_exit() { if (!m_disabled) { m_functor(); } }
-    void drop() const { m_disabled = true; }
+    explicit scope_exit(T&& f) : m_functor(std::forward<T>(f))
+    {
+    }
+    ~scope_exit()
+    {
+        if (!m_disabled)
+        {
+            m_functor();
+        }
+    }
+    void
+    drop() const
+    {
+        m_disabled = true;
+    }
 
     /* disable copy, makes no sense */
-    scope_exit(scope_exit const &) = delete;
-    scope_exit &operator=(scope_exit const &) = delete;
+    scope_exit(scope_exit const&) = delete;
+    scope_exit&
+    operator=(scope_exit const&) = delete;
 
-private:
-    T m_functor; /**< functor executed on scope exit through the dtor */
+  private:
+    T m_functor;                     /**< functor executed on scope exit through the dtor */
     mutable bool m_disabled = false; /**< the scope exit object may be disabled by the user */
 };
 
 /** scope_exit creator
  * @param[in] f Functor to execute on scope exit
  */
-template<typename T>
-scope_exit<T> make_scope_exit(T&& f) { return scope_exit<T>(std::forward<T>(f)); }
+template <typename T> scope_exit<T>
+make_scope_exit(T&& f)
+{
+    return scope_exit<T>(std::forward<T>(f));
+}
 
-#define DETAIL_SCOPE_EXIT_CONCATX(a, b) a ## b
+#define DETAIL_SCOPE_EXIT_CONCATX(a, b) a##b
 #define DETAIL_SCOPE_EXIT_CONCAT(a, b) DETAIL_SCOPE_EXIT_CONCATX(a, b)
 
 /** Macro helper to define a named scope_exit object. Use this if it is
@@ -51,4 +66,4 @@ scope_exit<T> make_scope_exit(T&& f) { return scope_exit<T>(std::forward<T>(f));
  */
 #define SCOPE_EXIT(f) SCOPE_EXIT_NAMED(DETAIL_SCOPE_EXIT_CONCAT(scope_exit_, __LINE__), f)
 
-}
+} // namespace

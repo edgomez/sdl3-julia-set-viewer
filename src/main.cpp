@@ -1,5 +1,5 @@
-#include <cstdlib>
 #include <cstdio>
+#include <cstdlib>
 #include <functional>
 
 #include <SDL3/SDL.h>
@@ -12,9 +12,10 @@ namespace
 constexpr int s_window_default_witdh = 640;
 constexpr int s_window_default_height = 480;
 
-}
+} // namespace
 
-extern "C" int main(int argc, char** argv)
+extern "C" int
+main(int argc, char** argv)
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     SCOPE_EXIT([]() { SDL_Quit(); });
@@ -26,10 +27,11 @@ extern "C" int main(int argc, char** argv)
         std::printf("error: failed creating window\n");
         return EXIT_FAILURE;
     }
-    SCOPE_EXIT([window]() {SDL_DestroyWindow(window); });
+    SCOPE_EXIT([window]() { SDL_DestroyWindow(window); });
 
     SDL_Renderer* renderer = nullptr;
-    renderer = SDL_CreateRenderer(window, nullptr, SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
+    renderer =
+        SDL_CreateRenderer(window, nullptr, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!renderer)
     {
         std::printf("error: failed creating renderer\n");
@@ -45,9 +47,9 @@ extern "C" int main(int argc, char** argv)
         {
             switch (e.type)
             {
-                case SDL_EVENT_QUIT:
-                    quit = true;
-                    break;
+            case SDL_EVENT_QUIT:
+                quit = true;
+                break;
             }
         }
 
