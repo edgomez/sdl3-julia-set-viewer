@@ -47,7 +47,7 @@ Then follow the typical `CMake` based project workflow.
 
 ```bash
 cmake -B build -S . -G "Ninja Multi-Config"
-cmake --build build --config Release --target julia
+cmake --build build --config Release --target sdl3-julia-set-viewer
 ```
 
 ## Working on the code
