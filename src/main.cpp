@@ -88,6 +88,22 @@ main(int /* argc */, char** /* argv */)
         return EXIT_FAILURE;
     }
 
+    unique_ptr_custom_delete<unsigned char> color_palette{
+        static_cast<unsigned char*>(std::malloc(256 * 3)),
+        [](unsigned char* ptr) { std::free(ptr); }};
+    if (!color_palette)
+    {
+        std::printf("error: failed allocating color palette");
+        return EXIT_FAILURE;
+    }
+    for (size_t i = 0; i < static_cast<size_t>(256); ++i)
+    {
+        unsigned char* color = &color_palette.get()[3 * i];
+        color[0] = static_cast<unsigned char>(i);
+        color[1] = static_cast<unsigned char>(i);
+        color[2] = static_cast<unsigned char>(i);
+    }
+
     bool quit = false;
     float scale = 1.f;
     complex pos{0.f, 0.f};
@@ -166,13 +182,13 @@ main(int /* argc */, char** /* argv */)
                 }
 
                 float lumaf = float(i) / float(s_iterations);
-                // lumaf = std::pow(lumaf, 1.f / 2.4f);
-                unsigned char luma = static_cast<unsigned char>(lumaf * 255.f);
+                size_t luma = static_cast<size_t>(std::max(std::min(lumaf * 255.f, 255.f), 0.f));
+                unsigned char const* color = &color_palette.get()[luma * 3];
 
                 buffer.get()[y * (w * 4) + (x * 4) + 0] = 255;
-                buffer.get()[y * (w * 4) + (x * 4) + 1] = luma;
-                buffer.get()[y * (w * 4) + (x * 4) + 2] = luma;
-                buffer.get()[y * (w * 4) + (x * 4) + 3] = luma;
+                buffer.get()[y * (w * 4) + (x * 4) + 1] = color[0];
+                buffer.get()[y * (w * 4) + (x * 4) + 2] = color[1];
+                buffer.get()[y * (w * 4) + (x * 4) + 3] = color[2];
             }
         }
 
