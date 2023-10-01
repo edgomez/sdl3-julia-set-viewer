@@ -8,6 +8,8 @@ It uses the function defined as $f(z) = z^{2} + c, \{z, c\}  \in \mathbb{C}$
 
 Everything is computed on CPU, mono-threaded... really not something worth looking at for performance :-)
 
+![Screenshot](/doc/julia-set-(0.245534-0.587292i).png?raw=true "Mandatory screenshot")
+
 ## Usage
 
 The following keyboard keys can be used to explore the Julia Set being rendered:
