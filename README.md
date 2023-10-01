@@ -1,5 +1,14 @@
 # SDL3 Julia Set viewer
 
+- [SDL3 Julia Set viewer](#sdl3-julia-set-viewer)
+  - [Description](#description)
+  - [Usage](#usage)
+  - [How to build](#how-to-build)
+    - [Pre-requisites](#pre-requisites)
+    - [Configuration and build](#configuration-and-build)
+  - [Working on the code](#working-on-the-code)
+  - [License](#license)
+
 ## Description
 
 A very simple SDL3 Julia Set Viewer.
