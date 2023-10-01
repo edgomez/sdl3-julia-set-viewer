@@ -16,9 +16,12 @@ add_executable(sdl3-julia-set-viewer
 target_compile_options(sdl3-julia-set-viewer
     PRIVATE
         "$<$<CXX_COMPILER_ID:MSVC>:/W4;/WX;/permissive->"
-        "$<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall;-Wextra;-Wpedantic;-Werror>"
+        "$<$<CXX_COMPILER_ID:GNU,Clang>:-Wall;-Wextra;-Wpedantic;-Werror>"
 )
 target_link_libraries(sdl3-julia-set-viewer
     PRIVATE
         SDL3::SDL3
+)
+target_compile_features(sdl3-julia-set-viewer
+    PRIVATE cxx_std_11
 )
