@@ -15,7 +15,7 @@ constexpr int s_window_default_height = 480;
 } // namespace
 
 extern "C" int
-main(int argc, char** argv)
+main(int /* argc */, char** /* argv */)
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     SCOPE_EXIT([]() { SDL_Quit(); });
