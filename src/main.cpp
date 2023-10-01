@@ -26,7 +26,7 @@ using complex = std::complex<float>;
 complex julia_c{0.355534f, -0.337292f};
 
 // Displacement value when key pressing r/R or i/I
-static constexpr complex julia_c_displacement{0.01f, 0.01f};
+static constexpr complex julia_c_displacement{0.001f, 0.001f};
 
 // Number of iterations before stating the norm of the series reaches infinity
 static constexpr int s_iterations = 64;
