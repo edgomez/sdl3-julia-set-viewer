@@ -8,6 +8,17 @@ It uses the function defined as $f(z) = z^{2} + c, \{z, c\}  \in \mathbb{C}$
 
 Everything is computed on CPU, mono-threaded... really not something worth looking at for performance :-)
 
+## Usage
+
+The following keyboard keys can be used to explore the Julia Set being rendered:
+
+- <kbd>Page Up</kbd>: zoom out
+- <kbd>Page Down</kbd>: zoom in
+- <kbd>Up</kbd>: move up
+- <kbd>Down</kbd>: move down
+- <kbd>Right</kbd>: move right
+- <kbd>Left</kbd>: move left
+
 ## How to build
 
 ### Pre-requisites
@@ -23,7 +34,7 @@ to use the SDL3 source as a GIT submodule.
 git submodule update --init
 ```
 
-### COnfiguration and build
+### Configuration and build
 
 Then follow the typical `CMake` based project workflow.
 
