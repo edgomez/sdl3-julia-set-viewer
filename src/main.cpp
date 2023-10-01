@@ -21,8 +21,14 @@ template <typename T> using unique_ptr_custom_delete = std::unique_ptr<T, std::f
 
 using complex = std::complex<float>;
 
+// You can try different constant complex here.
+// See https://paulbourke.net/fractals/juliaset/
 static constexpr complex julia_c{0.355534f, -0.337292f};
+
+// Number of iterations before stating the norm of the series reaches infinity
 static constexpr int s_iterations = 64;
+
+// This is infinity here ;-)
 static constexpr float s_arbitrary_big_norm = 1000.f;
 } // namespace
 
